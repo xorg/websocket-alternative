@@ -3,6 +3,7 @@ Websocket Load Testing and Prototypes
 
 ## Basic structure
 ```
+websocket-alternative
 │   
 │
 └───load-testing/

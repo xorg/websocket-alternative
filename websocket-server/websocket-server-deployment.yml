@@ -13,6 +13,7 @@ spec:
       nodePort: 30000
   selector:
     app: websocket-server
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -33,6 +34,10 @@ spec:
           - name: GET_HOSTS_FROM
             value: dns
         image: websocket-server:1.0
+        resources:
+          requests:
+            memory: 200Mi
+            cpu: 200m
         livenessProbe:
           httpGet:
             path: /health

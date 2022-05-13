@@ -3,12 +3,12 @@ from redis import StrictRedis, Redis
 import json
 from flask import Flask, request
 
-REDIS_HOST = os.environ["REDIS_MASTER_SERVICE_HOST"] if os.environ.get("GET_HOSTS_FROM", "") == "env" else "redis-master"
+REDIS_HOST = os.environ["REDIS_MASTER_SERVICE_HOST"] if os.environ.get("GET_HOSTS_FROM", "") == "env" else "localhost"
 REDIS_PORT = 6379
 
 app: Flask = Flask("app")
 
-redis_url: str = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
+redis_url: str = f"redis://127.0.0.1:{REDIS_PORT}/0"
 connection: Redis = StrictRedis.from_url(redis_url, decode_responses=True)
 channel_incoming: str = "test_in"
 
